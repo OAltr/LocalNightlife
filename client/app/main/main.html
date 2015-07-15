@@ -1,15 +1,28 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
-	<form>
-		<label></label>
-		<p class="input-group">
-			<input type="text" class="form-control" placeholder="Your location">
-			<span class="input-group-btn">
-				<button type="submit" class="btn btn-primary">Search</button>
-			</span>
-		</p>
-	</form>
+	<div class="row row-centered">
+		<div class="col-md-8 col-centered">
+			<form>
+				<label></label>
+				<p class="input-group">
+					<input type="text" class="form-control" placeholder="Your location" ng-model="searchString">
+					<span class="input-group-btn">
+						<button type="submit" class="btn btn-primary" ng-click="startSearching(searchString)">Search</button>
+					</span>
+				</p>
+			</form>
+		</div>
+	</div>
+	<div class="row row-centered">
+		<div class="col-xs-12 col-md-8 col-centered">
+			<li class="list-group-item" ng-repeat="location in locations">
+				<button class="bg-primary btn" ng-click="addMe(location)" ng-disabled="location.userGoing">Add me</button>
+				{{location.name}}
+				<span class="pull-right">{{location.going}} Going</span>
+			</li>
+		</div>
+	</di>
 </div>
 
 <footer class="footer">
