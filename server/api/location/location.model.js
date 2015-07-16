@@ -1,12 +1,12 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+		Schema = mongoose.Schema;
 
 var LocationSchema = new Schema({
-  name: String,
-  info: String,
-  active: Boolean
+	user: {type: Schema.ObjectId, ref: 'User'},
+	location: String,  // yelpID
+	date: String // date format d/m/y
 });
 
 module.exports = mongoose.model('Location', LocationSchema);
