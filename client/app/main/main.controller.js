@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('localNightlifeApp')
-	.controller('MainCtrl', function ($scope, $http, socket) {
+	.controller('MainCtrl', function ($scope, $http, socket, Auth) {
 		$scope.searchString = '';
 		$scope.locations = [];
 
@@ -9,19 +9,9 @@ angular.module('localNightlifeApp')
 			if(searchString === '')
 				return;
 
-			$scope.locations = [{
-				name: 'Bar One',
-				going: 3,
-				userGoing: false
-			}, {
-				name: 'Bar Two',
-				going: 4,
-				userGoing: true
-			}, {
-				name: 'Bar Three',
-				going: 5,
-				userGoing: false
-			}];
+			$http.get('/api/locations/'+searchString+'/'+Auth.getCurrentUser()._id).success(function(locations) {
+				$scope.locations = locations;
+			});
 		};
 
 		$scope.addMe = function(location) {
