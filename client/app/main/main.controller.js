@@ -31,6 +31,13 @@ angular.module('localNightlifeApp')
 			}
 		};
 
+		$scope.removeMe = function(location) {
+			if(location.userGoing) {
+				location.userGoing = false;
+				location.going--;
+			}
+		};
+
 		$scope.$on('$destroy', function () {
 		});
 	});
