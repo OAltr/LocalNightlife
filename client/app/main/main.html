@@ -17,8 +17,8 @@
 	<div class="row row-centered">
 		<div class="col-xs-12 col-md-8 col-centered">
 			<li class="list-group-item" ng-repeat="location in locations">
-				<button class="btn btn-primary btn-going" ng-click="addMe(location)" ng-hide="location.userGoing">Add me</button>
-				<button class="btn btn-danger btn-going" ng-click="removeMe(location)" ng-show="location.userGoing">Remove me</button>
+				<button class="btn btn-primary btn-going" ng-click="addMe(location)" ng-hide="location.userGoing" ng-disabled="working">Add me</button>
+				<button class="btn btn-danger btn-going" ng-click="removeMe(location)" ng-show="location.userGoing" ng-disabled="working">Remove me</button>
 				{{location.name}}
 				<span class="pull-right">{{location.going}} Going</span>
 			</li>
