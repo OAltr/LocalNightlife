@@ -54,12 +54,12 @@ exports.show = function(req, res) {
 
 // Creates a new location in the DB.
 exports.create = function(req, res) {
-	var location = req.params.locationID;
+	var theLocation = req.params.locationID;
 	var user = req.params.userID;
 
 	var newLocation = new Location();
 	newLocation.user = user;
-	newLocation.location = location;
+	newLocation.location = theLocation;
 	newLocation.date = today();
 
 	newLocation.save(function(err, location) {
@@ -70,9 +70,9 @@ exports.create = function(req, res) {
 
 // Deletes a location from the DB.
 exports.destroy = function(req, res) {
-	var location = req.params.locationID;
+	var theLocation = req.params.locationID;
 	var user = req.params.userID;
-	Location.find({location: location, user: user, date: today()}, function (err, location) {
+	Location.findOne({location: theLocation, user: user, date: today()}, function (err, location) {
 		if(err) { return handleError(res, err); }
 		if(!location) { return res.send(404); }
 		location.remove(function(err) {
