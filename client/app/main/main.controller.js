@@ -11,8 +11,14 @@ angular.module('localNightlifeApp')
 			if(searchString === '')
 				return;
 
+			$scope.locations = [];
+			$scope.working = true;
+
 			$http.get('/api/locations/'+searchString+'/'+Auth.getCurrentUser()._id).success(function(locations) {
 				$scope.locations = locations;
+				$scope.working = false;
+			}).error(function() {
+				$scope.working = false;
 			});
 		};
 
