@@ -42,7 +42,7 @@ exports.show = function(req, res) {
 						return location.location === business.id;
 					}).length,
 					userGoing: (allLocations.filter(function(location) {
-						return location.location === business.id && location.user === user;
+						return location.location === business.id && location.user.toString() === user;
 					}).length > 0)
 				};
 			});
