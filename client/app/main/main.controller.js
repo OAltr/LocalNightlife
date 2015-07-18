@@ -55,7 +55,4 @@ angular.module('localNightlifeApp')
 
 			// TODO: Remeber user to log in if he's not
 		};
-
-		$scope.$on('$destroy', function () {
-		});
 	});
